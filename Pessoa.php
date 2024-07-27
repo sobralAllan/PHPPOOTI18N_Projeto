@@ -1,68 +1,41 @@
 <?php
     namespace PHP\Modelo;
 
+    require_once('Endereco.php');
+
     class Pessoa{
         //Declarando as variáveis
-        private string $cpf;
-        private string $nome;
-        private string $telefone;
-        private string $endereco;
+        protected string $cpf;
+        protected string $nome;
+        protected string $telefone;
+        protected Endereco $endereco;
 
         //Método construtor
-        public function __construct(string $cpf, string $nome, string $telefone, string $endereco){
+        public function __construct(
+            string $cpf, 
+            string $nome, 
+            string $telefone, 
+            Endereco $endereco)
+        {
             $this->cpf = $cpf;
             $this->nome = $nome;
             $this->telefone = $telefone;
             $this->endereco = $endereco;
         }//fim do construtor
 
-        //Métodos de acesso e modificação
-        public function getCPF():string
-        {
-            return $this->cpf;
-        }//fim do getCPF
-
-        public function getNome():string
-        {
+        public function __get(string $nome){
             return $this->nome;
-        }//fim do método getNome
+        }//fim do getGenérico
 
-        public function getTelefone():string
-        {
-            return $this->telefone;
-        }//fim do método getTelefone
-
-        public function getEndereco():string
-        {
-            return $this->endereco;
-        }//fim do método getEndereco
-
-        public function setCPF(string $cpf):void
-        {
-            $this->cpf = $cpf;
-        }//fim do método setCPF
-
-        public function setNome(string $nome):void
-        {
-            $this->nome = $nome;
-        }//fim do método setNome
-
-        public function setTelefone(string $telefone):void
-        {
-            $this->telefone = $telefone;
-        }//fim do método setTelefone
-
-        public function setEndereco(string $endereco):void
-        {
-            $this->endereco = $endereco;
-        }//fim do método setEndereco
+        public function __set(string $campo, string $valor):void{
+            $this->campo = $valor;
+        }//fim do set
 
         public function imprimir():string
         {
-            return "<br>CPF: ".$this->getCPF().
-                   "<br>Nome: ".$this->getNome().
-                   "<br>Telefone: ".$this->getTelefone().
-                   "<br>Endereço: ".$this->getEndereco();
+            return "<br>CPF: ".$this->cpf.
+                   "<br>Nome: ".$this->nome.
+                   "<br>Telefone: ".$this->telefone;
         }//fim do método imprimir
 
 

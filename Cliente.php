@@ -1,33 +1,26 @@
 <?php
     namespace PHP\Modelo;
 
-    class Cliente{
-        private string $cpf;
-        private string $nome;
-        private string $telefone;
-        private string $endereco;
-        private DateTime $dataNascimento;
-        private float $totalDeCompras;
+    require_once('Endereco.php');
+
+    class Cliente extends Pessoa{
+        protected string $dataNascimento;
+        protected float $totalDeCompras;
 
         public function __construct(string $cpf,
                                     string $nome,
                                     string $telefone,
-                                    string $endereco,
-                                    DateTime $dataNascimento,
+                                    Endereco $endereco,
+                                    string $dataNascimento,
                                     float $totalDeCompras)
         {
-            $this->cpf            = $cpf;
-            $this->nome           = $nome;
-            $this->telefone       = $telefone;
-            $this->endereco       = $endereco;
+            parent::__construct($cpf,$nome,$telefone,$endereco);
             $this->dataNascimento = $dataNascimento;
             $this->totalDeCompras = $totalDeCompras; 
         }//fim do construtor
 
-        
-
-        public function __get(string $nomeDaVariavelQueVoceDeclarouNoConstrutor){
-            return $this->nomeDaVariavelQueVoceDeclarouNoConstrutor;
+        public function __get(string $nome){
+            return $this->nome;
         }//fim do getTexto
 
         public function __set(string $nomeVariavel,string $valor):void
@@ -37,12 +30,9 @@
 
         public function imprimir():string
         {
-            return "<br>CPF: ".$this->cpf.
-                   "<br>Nome: ".$this->$nome.
-                   "<br>Telefone: ".$this->telefone.
-                   "<br>Endereço: ".$this->endereco.
+            return parent::imprimir().
                    "<br>Data de Nascimento: ".$this->dataNascimento.
-                   "<br>Total de Compras: ".$this->totalCompras;
+                   "<br>Total de Compras: ".$this->totalDeCompras;
         }//fim do imprimir
 
       
