@@ -4,7 +4,34 @@
     require_once('Funcionario.php');
     require_once('Cliente.php');
     require_once('Endereco.php');
+    require_once('DAO/Conexao.php');
+    require_once('DAO/Inserir.php');
 
+    use PHP\Modelo\DAO\Conexao;//Direcionar o arquivo
+    use PHP\Modelo\DAO\Inserir;
+
+    $conexao = new Conexao();
+    $inserir = new Inserir();
+    /*echo $inserir->cadastrarEndereco($conexao,
+                                 1,
+                                'Rua jiparana',
+                                 123,
+                                'Berinni',
+                                'São Paulo',
+                                'São Paulo',
+                                'SP',
+                                'Brasil',
+                                '03586921');*/
+
+    echo $inserir->cadastrarCliente($conexao,
+                                '12345678910', 
+                                'Davi',
+                                '11981230912',
+                                '17/04/1989',
+                                1000,
+                                1);
+
+/*
     $enderecoCliente1 = new Endereco('Rua jiparana',
                                      123,
                                     'Berinni',
@@ -45,4 +72,5 @@
     
     echo $funcionario1->imprimir();
     echo $enderecoFunc1->imprimir();
+*/
 ?>
