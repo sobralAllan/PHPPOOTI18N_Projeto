@@ -6,12 +6,21 @@
     require_once('Endereco.php');
     require_once('DAO/Conexao.php');
     require_once('DAO/Inserir.php');
+    require_once('DAO/Consultar.php');
+    require_once('DAO/Atualizar.php');
+    require_once('DAO/Excluir.php');
 
     use PHP\Modelo\DAO\Conexao;//Direcionar o arquivo
     use PHP\Modelo\DAO\Inserir;
+    use PHP\Modelo\DAO\Consultar;
+    use PHP\Modelo\DAO\Atualizar;
+    use PHP\Modelo\DAO\Excluir;
 
     $conexao = new Conexao();
     $inserir = new Inserir();
+    $consultar = new Consultar();
+    $atualizar = new Atualizar();
+    $excluir = new Excluir();
     /*echo $inserir->cadastrarEndereco($conexao,
                                  1,
                                 'Rua jiparana',
@@ -23,13 +32,30 @@
                                 'Brasil',
                                 '03586921');*/
 
-    echo $inserir->cadastrarCliente($conexao,
+    /*echo $inserir->cadastrarCliente($conexao,
                                 '12345678910', 
                                 'Davi',
                                 '11981230912',
                                 '17/04/1989',
                                 1000,
-                                1);
+                                1);*/
+    /*$consultar->consultarIndividual($conexao,
+                                    'cliente',
+                                    'cpf',
+                                    '12345678910');
+    
+  
+
+    $atualizar->atualizarCliente($conexao, 
+                                "nome",
+                                "Claudia",
+                                "12345678910");
+    */
+
+    $excluir->excluirCliente($conexao,"12345678910");
+
+    $consultar->consultarTudo($conexao,
+                             'cliente');
 
 /*
     $enderecoCliente1 = new Endereco('Rua jiparana',
@@ -73,4 +99,6 @@
     echo $funcionario1->imprimir();
     echo $enderecoFunc1->imprimir();
 */
+
 ?>
+
